@@ -110,7 +110,6 @@ preview_module.controller('previewController', function($scope, $http, previewFa
           $scope.loading = false;
         })
         }
-
       }
       //hides preview if there is no URL
       else{
