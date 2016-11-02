@@ -35,7 +35,9 @@ preview_module.controller('previewController', function($scope, $http, previewFa
 
     //Regular Expression to check against input string for valid URL
 
-    var urlRegex = /(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi
+    // var urlRegex = /(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi
+    var urlRegex= /(\b(?:(?:https?|ftp|file|[A-Za-z]+):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$]))/i
+
 
     //Checks if any word within string matches a valid URL
     if (text.search(urlRegex) != -1) {
@@ -80,12 +82,13 @@ preview_module.controller('previewController', function($scope, $http, previewFa
             var description = html.match(/<meta [^>]*property=[\"']og:description[\"'] [^>]*content=[\"']([^'^\"]+?)[\"'][^>]*>/);
 
             //Creates string without http(s) or www for display purposes
-            if ($scope.url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i)){
-              $scope.link_string = $scope.url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i)[1];
-            }
-            else{
-              $scope.link_string = $scope.url;
-            }
+            // if ($scope.url.match(/^https?\:\/\/(?:www\.)?([^\/?#]+)(?:[\/?#]|$)/i)){
+            //   $scope.link_string = $scope.url.replace(/^(https?:\/\/)?(www\.)?/,'');
+            // }
+            // else{
+            //   $scope.link_string = $scope.url;
+            // }
+            $scope.link_string = $scope.url.replace(/^(https?:\/\/)?(www\.)?/,'');
             //Checks for all three display items in case HTML did not include them
             if(title){
               $scope.title_tag=title[1];

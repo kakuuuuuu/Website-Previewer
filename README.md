@@ -9,3 +9,6 @@ My current challenges are accounting for inputs with multiple URLs.  If the user
 
 # General Experience
 This project was actually really fun, because I really love piecing together information like a puzzle.  The best part was gaining more experience with the use and purpose of various meta tags and Open Graph items hidden in the header of websites.  It gave me a lot more practice with wrangling regular expressions the way I expect them to behave and some much needed first hand experience with web scraping, as it's something I tend to avoid implementing.
+
+# Current Buglist
+- Does not detect URL followed by a period
