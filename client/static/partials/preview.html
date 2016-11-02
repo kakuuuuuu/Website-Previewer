@@ -1,0 +1,26 @@
+<div ng-controller='previewController'>
+  <form class='row'>
+    <div class="offset-s3 col s6 row">
+        <div class='input-field col s8'>
+          <input ng-change='update()' ng-model-options="{debounce:200}" ng-model='message' id="urlfield" type="text" class="validate">
+          <label for="urlfield">Share with your friends!</label>
+        </div>
+        <div class='col s2'>
+          <loading></loading>
+        </div>
+      </div>
+  </form>
+  <div class='row'>
+    <h2 ng-show='failed==true'>Website could not be found</h2>
+    <div class='offset-s3 col s6' id='preview' ng-hide='loading==true || found==false'>
+      <div id='preview_image_div'>
+        <a ng-href="{{url}}"><img id='preview_image' ng-src='{{banner_url}}' ng-show='banner_url!=""' alt='banner' /></a>
+      </div>
+      <div id='preview_text_div'>
+        <h5 ng-bind='title_tag'></h5>
+        <p ng-bind='descript'></p>
+        <a id='link' ng-href='{{url}}'><span ng-bind='link_string'></span></a>
+      </div>
+    </div>
+  </div>
+</div>
