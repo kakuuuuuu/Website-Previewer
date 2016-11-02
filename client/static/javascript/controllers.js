@@ -36,20 +36,20 @@ preview_module.controller('previewController', function($scope, $http, previewFa
     //Regular Expression to check against input string for valid URL
 
     // var urlRegex = /(([a-z]+:\/\/)?(([a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel|local|internal))(:[0-9]{1,5})?(\/[a-z0-9_\-\.~]+)*(\/([a-z0-9_\-\.]*)(\?[a-z0-9+_\-\.%=&amp;]*)?)?(#[a-zA-Z0-9!$&'()*+.=-_~:@/?]*)?)(\s+|$)/gi
-    var urlRegex= /(\b(?:(?:https?|ftp|file|[A-Za-z]+):\/\/|www\.|ftp\.)?(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$]))/i
+    var urlRegex= /(\b(?:(?:https?|ftp|file|[A-Za-z]+):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$]))/i
 
 
     //Checks if any word within string matches a valid URL
     if (text.search(urlRegex) != -1) {
-
+      console.log($scope.url)
       //Checks if previous url is stored in scope to avoid trim errors
       if($scope.url){
         $scope.url = $scope.url.trim()
       }
-
+      console.log(text.match(urlRegex))
       //Trims url from altered input field
       new_url = text.match(urlRegex)[0].trim()
-
+      console.log(new_url)
       //Checks if url has changed to avoid refreshing preview unnecessarily
       if($scope.url != new_url){
         //Hides preview
@@ -94,7 +94,7 @@ preview_module.controller('previewController', function($scope, $http, previewFa
               $scope.title_tag=title[1];
             }
             else{
-              $scope.title_tag="No Title Available"
+              $scope.title_tag=""
             }
             if(image_url){
               $scope.banner_url=image_url[1];
@@ -106,7 +106,7 @@ preview_module.controller('previewController', function($scope, $http, previewFa
               $scope.descript=description[1]
             }
             else{
-              $scope.descript="No Description Available"
+              $scope.descript=""
             }
           }
           //turns off loading on failure
