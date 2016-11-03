@@ -1,4 +1,4 @@
-<div ng-controller='previewController'>
+<div ng-controller='previewController' id='main'>
   <form class='row'>
     <div class="offset-s3 col s6 row">
         <div class='input-field col s8'>
@@ -17,7 +17,7 @@
         <a ng-href="{{url}}"><img id='preview_image' ng-src='{{banner_url}}' ng-show='banner_url!=""' alt='banner' /></a>
       </div>
       <div id='preview_text_div'>
-        <h5 ng-bind='title_tag' ng-show='title_tag!=""'></h5>
+        <h5 ng-bind='title_tag' ng-show='title_tag!=""'></h5><i ng-click='close()' class="fa fa-times right" aria-hidden="true"></i>
         <p ng-bind='descript' ng-show='descript!=""'></p>
         <a id='link' ng-href='{{url}}'><span ng-bind='link_string'></span></a>
       </div>

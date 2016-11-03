@@ -6,6 +6,10 @@
   width: 100px;
   height: auto;
 }
+#main{
+  background-color: white;
+  height: 100%;
+}
 #preview{
   border-style: groove;
   height: auto;
